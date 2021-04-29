@@ -1,0 +1,22 @@
+{% extends "website/base.html"%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  {% for task in tasks %}
+  <p></p>
+    <div class="container-xl">
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <small class="text-muted">{{ task.receiver.username }}</small>
+            <small class="text-muted">{{ task.date_posted|date:"F d, Y" }}</small>
+          </div>
+          <h2><p class="article-title">{{ task.title }}</p></h2>
+          <p class="article-content">{{ task.task }}</p>
+          <a class="btn btn-secondary" href="./delete/{{ task.id }}" role="button">Submit</a>
+        </div>
+      </article>
+    </div>
+  {% endfor %}
+
+{% endblock content %}
